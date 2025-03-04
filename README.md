@@ -18,8 +18,8 @@ Este projeto configura um ambiente Docker com múltiplos microserviços, cada um
 
 1. **Clone o repositório:**
    ```bash
-   git clone <URL_DO_REPOSITORIO>
-   cd <NOME_DO_REPOSITORIO>
+   git clone [<URL_DO_REPOSITORIO>](https://github.com/KronosZbr/Docker-com-Microservi-os-e-Adminer)
+   cd Docker-com-Microservi-os-e-Adminer
    ```
 
 2. **Suba os containers:**
