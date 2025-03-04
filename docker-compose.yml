@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  # Microservice 1
+  microservice1:
+    image: nginx:alpine
+    ports:
+      - "8001:80"
+    volumes:
+      - ./microservice1:/usr/share/nginx/html
+    networks:
+      - net1
+    depends_on:
+      - db1
+
+  db1:
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: pass1
+      POSTGRES_DB: db1
+    networks:
+      - net1
+
+  # Microservice 2
+  microservice2:
+    image: nginx:alpine
+    ports:
+      - "8002:80"
+    volumes:
+      - ./microservice2:/usr/share/nginx/html
+    networks:
+      - net2
+    depends_on:
+      - db2
+
+  db2:
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: user2
+      POSTGRES_PASSWORD: pass2
+      POSTGRES_DB: db2
+    networks:
+      - net2
+
+  # Microservice 3
+  microservice3:
+    image: nginx:alpine
+    ports:
+      - "8003:80"
+    volumes:
+      - ./microservice3:/usr/share/nginx/html
+    networks:
+      - net3
+    depends_on:
+      - db3
+
+  db3:
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: user3
+      POSTGRES_PASSWORD: pass3
+      POSTGRES_DB: db3
+    networks:
+      - net3
+
+  # Adminer
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
+    networks:
+      - net1
+      - net2
+      - net3
+
+networks:
+  net1:
+  net2:
+  net3:
